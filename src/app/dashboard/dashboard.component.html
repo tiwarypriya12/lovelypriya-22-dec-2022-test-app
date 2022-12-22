@@ -1,0 +1,114 @@
+<app-chart></app-chart> <br /><br />
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <form>
+        <div class="form-group form-inline">
+          Search by name:
+          <input
+            class="form-control ml-2"
+            type="text"
+            name="searchTerm"
+            [(ngModel)]="searchTerm"
+            (input)="search($event, 1)"
+          />
+        </div>
+      </form>
+      <table class="table table-responsive-sm" pageSize="5">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let user of userList">
+          <tr>
+            <td scope="row">{{ user.id }}</td>
+            <td scope="row">{{ user.title }}</td>
+            <td scope="row">{{ user.username }}</td>
+            <td scope="row">{{ user.phone }}</td>
+            <td scope="row">{{ user.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-6">
+      <form>
+        <div class="form-group form-inline">
+          Search by name:
+          <input
+            class="form-control ml-2"
+            type="text"
+            name="searchTerm"
+            [(ngModel)]="searchTerm"
+            (input)="search($event, 2)"
+          />
+        </div>
+      </form>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" sortable="id">Id</th>
+            <th scope="col" sortable="title">Name</th>
+            <th scope="col" sortable="email">Email</th>
+            <th scope="col" sortable="body">Body</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let comment of commentList">
+            <th scope="row">{{ comment.id }}</th>
+            <td>{{ comment.title }}</td>
+            <td>{{ comment.email }}</td>
+            <td>{{ comment.body }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <form>
+        <div class="form-group form-inline">
+          Search by name:
+          <input
+            class="form-control ml-2"
+            type="text"
+            name="searchTerm"
+            [(ngModel)]="searchTerm"
+            (input)="search($event, 3)"
+          />
+        </div>
+      </form>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" sortable="id">Id</th>
+            <th scope="col" sortable="title">Title</th>
+            <th scope="col" sortable="price">Price</th>
+            <th scope="col" sortable="category">Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of itemList |slice: (page-1) * 10 : (page-1) * 10 + 10">
+            <th scope="row">{{ item.id }}</th>
+            <td>{{ item.title }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.category }}</td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <div class="d-flex justify-content-between p-2">
+        <ngb-pagination [collectionSize]="collectionSize3" [(page)]="page" [pageSize]="pageSize" (pageChange)="getData();">
+        </ngb-pagination>
+      </div>
+    </div>
+  </div>
+  
+</div>

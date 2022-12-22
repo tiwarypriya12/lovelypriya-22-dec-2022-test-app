@@ -1,3 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
- 
+
+.main {
+    background-color: #e6f6ff;
+}
+
+.div1 {
+    background-color: #fb4e71;
+    padding: 25px;
+}
+
+.div2 {
+    background-color: #ffffff;
+}
+
+* {
+    font-family: "Roboto";
+}
+
+.cls1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+img {
+    height: 400px;
+}

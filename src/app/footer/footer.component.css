@@ -1,0 +1,11 @@
+footer {
+  position: fixed;
+  height: 70px;
+  bottom: 0;
+  width: 100%;
+}
+
+footer p {
+  padding: 15px;
+  text-align: center;
+}
