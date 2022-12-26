@@ -13,11 +13,9 @@ export interface CommentList {
 }
 
 export interface UsersList {
-    id: number;
-    title: string;
-    userame: string;
-    phone: number;
-    email: string;
-  }
-
-
+  id: number;
+  title: string;
+  userame: string;
+  phone: number;
+  email: string;
+}

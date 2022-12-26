@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from '../data.service';
+import { RouteServiceService } from '../../guards/route-service.service';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +9,13 @@ import { DataService } from '../data.service';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn!: boolean;
-  constructor(private router: Router, private dataService: DataService) {}
+  constructor(
+    private router: Router,
+    private routeService: RouteServiceService
+  ) {}
 
   ngOnInit(): void {
-    this.dataService.messageObservable$.subscribe((data) => {
+    this.routeService.messageObservable$.subscribe((data) => {
       console.log('Data: ', data);
       this.isLoggedIn = data;
     });
@@ -20,7 +23,7 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.isLoggedIn = false;
-    this.dataService.setData(this.isLoggedIn);
+    this.routeService.setData(this.isLoggedIn);
     this.router.navigate(['/home']);
   }
 }
