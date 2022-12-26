@@ -1,20 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HomeComponent } from './home/home.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HomeComponent } from './components/home/home.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { RouteGuardGuard } from './guards/route-guard.guard';
+import { RouteDeactivateGuard } from './guards/route-deactivate.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'login', component: LoginComponent },
-  { path: '**', component: PageNotFoundComponent}
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [RouteGuardGuard],
+  },
+  {
+    path: 'signup',
+    component: SignUpComponent,
+    canDeactivate: [RouteDeactivateGuard],
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./log-in/log-in.module').then((m) => m.LogInModule),
+  },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

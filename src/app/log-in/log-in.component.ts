@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from '../data.service';
+import { RouteServiceService } from '../guards/route-service.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-log-in',
+  templateUrl: './log-in.component.html',
+  styleUrls: ['./log-in.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LogInComponent implements OnInit {
+
   isLoggedIn = false;
   form!: FormGroup;
   
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private dataService: DataService
+    private routeService: RouteServiceService
   ) {}  
 
   ngOnInit() {
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.isLoggedIn = true;
-    this.dataService.setData(this.isLoggedIn);
+    this.routeService.setData(this.isLoggedIn);
     this.router.navigate(['/home']);
   }
+
 }

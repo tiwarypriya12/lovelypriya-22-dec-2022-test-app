@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
-import { CommentList, List, UsersList } from '../list.interface';
+import { DataService } from '../../services/data.service';
+import { CommentList, List, UsersList } from '../../interface/list.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -68,5 +68,4 @@ export class DashboardComponent implements OnInit {
       (this.page - 1) * this.pageSize + this.pageSize
     );
   }
-
 }
